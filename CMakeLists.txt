@@ -1,6 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
 
-PROJECT(razter)
+PROJECT(HW)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -24,12 +24,9 @@ if(NOT MSVC)
 
 endif()
 
-option(GLUI_BUILD_TEST OFF)
-
 include_directories(
 	"${CMAKE_SOURCE_DIR}/VKL/include"
 )
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/VKL")
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/razter")
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/razter-Test")
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src")
