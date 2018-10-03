@@ -70,8 +70,8 @@ void showImage(VKLInstance* instance, ImageDataHeader* header, char* pixels) {
 	VKLShader* shader;
 	vklCreateShader(device, &shader, &shaderCreateInfo);
 
-	VKLPipelineCreateInfo pipelineCreateInfo;
-	memset(&pipelineCreateInfo, 0, sizeof(VKLPipelineCreateInfo));
+	VKLGraphicsPipelineCreateInfo pipelineCreateInfo;
+	memset(&pipelineCreateInfo, 0, sizeof(VKLGraphicsPipelineCreateInfo));
 	pipelineCreateInfo.shader = shader;
 	pipelineCreateInfo.renderPass = backBuffer->renderPass;
 	pipelineCreateInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
@@ -79,7 +79,7 @@ void showImage(VKLInstance* instance, ImageDataHeader* header, char* pixels) {
 	pipelineCreateInfo.extent.width = swapChain->width;
 	pipelineCreateInfo.extent.height = swapChain->height;
 
-	VKLGraphicsPipeline* pipeline;
+	VKLPipeline* pipeline;
 	vklCreateGraphicsPipeline(device, &pipeline, &pipelineCreateInfo);
 
 	VkCommandBuffer cmdBuffer;
@@ -171,7 +171,7 @@ void showImage(VKLInstance* instance, ImageDataHeader* header, char* pixels) {
 
 	vklDestroyTexture(device, texture);
 	vklDestroyUniformObject(device, uniform);
-	vklDestroyGraphicsPipeline(device, pipeline);
+	vklDestroyPipeline(device, pipeline);
 	vklDestroyShader(device, shader);
 	vklDestroyBuffer(device, uniformBuffer);
 	vklDestroyBuffer(device, buffer);

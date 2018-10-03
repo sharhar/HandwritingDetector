@@ -1,0 +1,19 @@
+#version 430
+layout(local_size_x = 1, local_size_y = 1) in;
+
+layout(binding = 0, std430) buffer a {
+	int data[];
+} inArray;
+
+layout(binding = 1, std430) buffer b {
+	int data[];
+} outArray;
+
+layout(binding = 2, std430) buffer c {
+	int width;
+	int height;
+} imageData;
+
+void main() {
+	outArray.data[gl_GlobalInvocationID.y*imageData.width+gl_GlobalInvocationID.x] = inArray.data[gl_GlobalInvocationID.y*imageData.width+gl_GlobalInvocationID.x];
+}
